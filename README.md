@@ -62,4 +62,17 @@ As an output you can see some strangely formatted test, do not worry, we just ma
 
 Now it is time for us to test how our Nginx server can respond to requests from the Internet. Open a web browser of your choice and try to access following url
 
+http:// your-public-ip-address:80
+
+Another way to retrieve your Public IP address, other than to check it in AWS Web console, is to use following command:
+
+curl -s http://169.254.169.254/latest/meta-data/public-ipv4
+
+The URL in browser shall also work if you do not specify port number since all web browsers use port 80 by default.
+
+If you see following page, then your web server is now correctly installed and accessible through your firewall.
+
+![](./images/pic5.png)
+
+In fact, it is the same content that you previously got by ‘curl’ command, but represented in nice HTML formatting by your web browser.
 
