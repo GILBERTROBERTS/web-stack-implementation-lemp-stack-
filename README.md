@@ -300,23 +300,24 @@ Now you can create a PHP script that will connect to MySQL and query for your co
 The following PHP script connects to the MySQL database and queries for the content of the todo_list table, displays the results in a list. If there is a problem with the database connection, it will throw an exception.
 
 Copy this content into your todo_list.php script:
-- <?php
-$user = "example_user";
-$password = "password";
-$database = "example_database";
-$table = "todo_list";
 
-try {
-  $db = new PDO("mysql:host=localhost;dbname=$database", $user, $password);
-  echo "<h2>TODO</h2><ol>";
-  foreach($db->query("SELECT content FROM $table") as $row) {
-    echo "<li>" . $row['content'] . "</li>";
-  }
-  echo "</ol>";
-} catch (PDOException $e) {
-    print "Error!: " . $e->getMessage() . "<br/>";
-    die();
-}
+- <?php
+- $user = "example_user";
+- $password = "password";
+- $database = "example_database";
+- $table = "todo_list";
+
+- try {
+-  $db = new PDO("mysql:host=localhost;dbname=$database", $user, $password);
+-  echo "<h2>TODO</h2><ol>";
+-  foreach($db->query("SELECT content FROM $table") as $row) {
+-    echo "<li>" . $row['content'] . "</li>";
+-  }
+-  echo "</ol>";
+- } catch (PDOException $e) {
+-    print "Error!: " . $e->getMessage() . "<br/>";
+-    die();
+- }
 
 Save and close the file when you are done editing.
 
