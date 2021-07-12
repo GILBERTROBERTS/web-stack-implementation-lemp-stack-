@@ -188,4 +188,35 @@ You shall see following message:
 
 ![](./images/pic11.png)
 
-f any errors are reported, go back to your configuration file to review its contents before continuing.
+If any errors are reported, go back to your configuration file to review its contents before continuing.
+
+We also need to disable default Nginx host that is currently configured to listen on port 80, for this run: 
+- sudo unlink /etc/nginx/sites-enabled/default
+
+When you are ready, reload Nginx to apply the changes:
+- sudo systemctl reload nginx
+
+Your new website is now active, but the web root /var/www/projectLEMP is still empty. Create an index.html file in that location so that we can test that your new server block works as expected:
+- sudo echo 'Hello LEMP from hostname' $(curl -s http://169.254.169.254/latest/meta-data/public-hostname) 'with public IP' $(curl -s http://169.254.169.254/latest/meta-data/public-ipv4) > /var/www/projectLEMP/index.html
+
+Now go to your browser and try to open your website URL using IP address:
+- http://Public-IP-Address:80
+
+![](./images/pic12.png)
+
+If you see the text from ‘echo’ command you wrote to index.html file, then it means your Nginx site is working as expected. In the output you will see your server’s public hostname (DNS name) and public IP address. You can also access your website in your browser by public DNS name, not only by IP - try it out, the result must be the same (port is optional):
+- http://Public-DNS-Name>:80
+
+You can leave this file in place as a temporary landing page for your application until you set up an **index.php** file to replace it. Once you do that, remember to remove or rename the **index.html** file from your document root, as it would take precedence over an index.php file by default.
+
+Your LEMP stack is now fully configured. In the next step, we’ll create a PHP script to test that Nginx is in fact able to handle **.php** files within your newly configured website.
+
+###### testing php with nginx
+Your LEMP stack should now be completely set up.
+
+At this point, your LAMP stack is completely installed and fully operational.
+
+You can test it to validate that Nginx can correctly hand .php files off to your PHP processor.
+
+You can do this by creating a test PHP file in your document root. Open a new file called info.php within your document root in your text editor:
+-
