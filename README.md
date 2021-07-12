@@ -30,4 +30,21 @@ Since this is our first time using **apt** for this session, start off by upda
 
 - sudo apt update
 - sudo apt install nginx
+
 ![](./images/pic2.png)
+
+When prompted, enter Y to confirm that you want to install Nginx. Once the installation is finished, the Nginx web server will be active and running on your Ubuntu 20.04 server
+
+To verify that nginx was successfully installed and is running as a service in Ubuntu, run:
+- sudo systemctl status nginx
+
+![](./images/pic3.png)
+
+If it is green and running, then you did everything correctly - you have just launched your first Web Server in the Clouds!
+
+Before we can receive any traffic by our Web Server, we need to open [TCP port 80](https://en.wikipedia.org/wiki/List_of_TCP_and_UDP_port_numbers) which is default port that web brousers use to access web pages in the Internet.
+
+As we know, we have TCP port 22 open by default on our EC2 machine to access it via SSH, so we need to add a rule to EC2 configuration to open inbound connection through port 80:
+
+![](./images/GIF1.gif)
+
